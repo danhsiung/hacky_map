@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple Map Symbols</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+      // Australia.
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: {lat: 37.416357, lng: -122.024811}
+        });
+
+        var image = 'https://www.noupe.com/wp-content/uploads/2014/04/funny_icons_fart.png';
+        var beachMarker = new google.maps.Marker({
+          position: {lat: 37.416357, lng: -122.024811},
+          map: map,
+          icon: image
+        });
+
+        var rectangleCoords = [
+          {lat: 37.419723, lng: -122.026402},
+          {lat: 37.419135, lng: -122.023870},
+          {lat: 37.416366, lng: -122.024836},
+          {lat: 37.416784, lng: -122.026081},
+          {lat: 37.418028, lng: -122.026725},
+          {lat: 37.418748, lng: -122.027283}
+        ];
+
+        var yahooRect = new google.maps.Polygon({
+          paths: rectangleCoords,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        yahooRect.setMap(map);
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF9PSji8zxYKlx4ai5dabHECO-peu_v3M&callback=initMap">
+    </script>
+  </body>
+</html>
